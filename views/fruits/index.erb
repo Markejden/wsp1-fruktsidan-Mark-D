@@ -1,3 +1,14 @@
 <h2>Alla frukter i butiken</h2>
 
+<%@fruits.each do |fruit|%>
+    <p><%= fruit["name"]%><p>
+        <ol>
+            <li><%= fruit["tastiness"]%></li>
+            <li><%= fruit["description"]%></li>
+        </ol>
+<%end%>
+
+<%fk = @fruits.reduce([]){|ack,frukt|ack << frukt["name"]}%>
+<p><%=fk%><p>
+
 <code>TODO: Skriv ut en lista (ul + li) för att visa alla frukter i databasen</code>
