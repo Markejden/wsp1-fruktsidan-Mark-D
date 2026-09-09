@@ -1,9 +1,9 @@
 <h2>Alla frukter i butiken</h2>
 
 <%@fruits.each do |fruit|%>
-    <p><%= fruit["name"]%><p>
+    <a href="/fruits/<%= fruit["id"]%>"> <%= fruit["name"]%><a>
         <ol>
-            <li><%= fruit["tastiness"]%></li>
+            <li><%="★" * fruit["tastiness"] + "☆" * (10-fruit["tastiness"])%></li>
             <li><%= fruit["description"]%></li>
         </ol>
 <%end%>

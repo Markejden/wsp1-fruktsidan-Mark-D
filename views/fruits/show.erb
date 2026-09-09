@@ -1,3 +1,7 @@
-<h2>Mer information om vald frukt</h2>
-
+<h2>Mer information om <%=@fruit["name"]%></h2>
+<p><%= @fruit["name"]%><p>
+        <ol>
+            <li>Tastiness: <%="★" * @fruit["tastiness"] + "☆" * (10-@fruit["tastiness"])%></li>
+            <li>Desc: <%= @fruit["description"]%></li>
+        </ol>
 <code>TODO: Visa all info som finns i databasen om aktuell frukt</code>

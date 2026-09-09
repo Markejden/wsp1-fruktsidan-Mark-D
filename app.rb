@@ -14,10 +14,17 @@ class App < Sinatra::Base
     end
 
     get '/fruits' do 
-      @fruits = db.execute("SELECT * FROM products")
+      @fruits = db.execute("SELECT * FROM products ORDER BY name ASC")
       ap @fruits
       erb :"fruits/index"
     end
+
+    get '/fruits/:id' do |id|
+      @fruit = db.execute('SELECT * FROM products WHERE id=? ORDER BY name ASC',id).first
+      ap @fruit
+      erb(:"fruits/show")
+    end
+    
     #TODO: Skriv routen hämtar alla frukter i databasen
 
 end
