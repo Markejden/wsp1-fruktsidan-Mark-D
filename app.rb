@@ -19,12 +19,27 @@ class App < Sinatra::Base
       erb :"fruits/index"
     end
 
+    get '/fruits/new' do 
+      @fruits = db.execute("SELECT * FROM products ORDER BY name ASC")
+      erb :"fruits/new"
+    end
+
+    post '/fruits/new/newfruit' do
+      name = params["name"]
+      tasti = params["tasti"]
+      desc = params["desc"]
+      db.execute("INSERT INTO products (name, tastiness, description) VALUES (?, ?, ?)",[name, (tasti.to_i > 10) ? 10 : (tasti.to_i < 1) ? 1 : tasti, desc])
+      redirect("/fruits")
+    end
+
     get '/fruits/:id' do |id|
       @fruit = db.execute('SELECT * FROM products WHERE id=? ORDER BY name ASC',id).first
       ap @fruit
-      erb(:"fruits/show")
+      erb :"fruits/show"
     end
     
-    #TODO: Skriv routen hämtar alla frukter i databasen
-
+    post '/fruits/:id/delete' do |id|
+      db.execute("DELETE FROM products WHERE id =?", id)
+      redirect("/fruits")
+    end
 end

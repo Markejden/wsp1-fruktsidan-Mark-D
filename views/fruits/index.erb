@@ -1,12 +1,23 @@
 <h2>Alla frukter i butiken</h2>
-
-<%@fruits.each do |fruit|%>
-    <a href="/fruits/<%= fruit["id"]%>"> <%= fruit["name"]%><a>
-        <ol>
-            <li><%="★" * fruit["tastiness"] + "☆" * (10-fruit["tastiness"])%></li>
-            <li><%= fruit["description"]%></li>
-        </ol>
-<%end%>
+<ul>
+<% @fruits.each do |fruit| %>
+<li>
+	<a href="/fruits/<%= fruit["id"]%>">
+		<%= fruit["name"] %>
+	</a>
+    <form class="delete" action="/fruits/<%=fruit["id"]%>/delete" method="post">
+       		<input type="submit" value="Ta bort">
+   	</form>
+    <br>
+    <a style="color:black;">
+		<%="★" * fruit["tastiness"] + "☆" * (10-fruit["tastiness"])%>
+        <br>
+        <%= fruit["description"]%>
+	</a>
+	</li>
+    <br>
+<% end %>
+</ul>
 
 <%fk = @fruits.reduce([]){|ack,frukt|ack << frukt["name"]}%>
 <p><%=fk%><p>
