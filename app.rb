@@ -20,11 +20,10 @@ class App < Sinatra::Base
     end
 
     get '/fruits/new' do 
-      @fruits = db.execute("SELECT * FROM products ORDER BY name ASC")
       erb :"fruits/new"
     end
 
-    post '/fruits/new/newfruit' do
+    post '/fruits' do
       name = params["name"]
       tasti = params["tasti"]
       desc = params["desc"]
