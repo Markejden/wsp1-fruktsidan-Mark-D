@@ -24,9 +24,7 @@ class App < Sinatra::Base
     end
 
     post '/fruits' do
-      name = params["name"]
-      tasti = params["tasti"]
-      desc = params["desc"]
+      name, tasti, desc = params["name"], params["tasti"], params["desc"]
       db.execute("INSERT INTO products (name, tastiness, description) VALUES (?, ?, ?)",[name, (tasti.to_i > 10) ? 10 : (tasti.to_i < 1) ? 1 : tasti, desc])
       redirect("/fruits")
     end
