@@ -4,4 +4,18 @@
             <li>Tastiness: <%="★" * @fruit["tastiness"] + "☆" * (10-@fruit["tastiness"])%></li>
             <li>Desc: <%= @fruit["description"]%></li>
             <li>True Tastiness: <%=@fruit["tastiness"]%></li>
+            <li>Kategori: <%=@category["name"]%></li>
         </ol>
+
+<form action="/fruits/<%= @fruit['id'] %>/category" method="post">
+  <select name="category_id">
+    <% @categories.each do |category| %>
+      <option value="<%= category['id'] %>">
+        <%= category['name'] %>
+      </option>
+    <% end %>
+  </select>
+
+  <button type="submit">Change category</button>
+</form>
+

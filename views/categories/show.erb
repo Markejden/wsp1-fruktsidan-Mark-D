@@ -1,0 +1,16 @@
+<h2>Mer information om <%=@categories["name"]%></h2>
+<p><%= @categories["name"]%><p>
+        <ol>
+            <li>Desc: <%= @categories["description"]%></li>
+            <li>True Tastiness: <%=@categories["tastiness"]%></li>
+        </ol>
+        <ol>
+        <% @fruits.each do |fruit| %>
+                <li>
+                    <a href="/fruits/<%= fruit["id"]%>">
+                        <%= fruit["name"] %>
+                    </a>
+                </li>
+            <% end %>
+            </ol>
+
