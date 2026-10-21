@@ -52,7 +52,7 @@ class App < Sinatra::Base
     end
 
     get '/fruits' do 
-      @fruits = db.execute("SELECT * FROM products ORDER BY name ASC")
+      @fruits = db.execute("SELECT products.*, categories.name AS category_name FROM products INNER JOIN categories ON category_id = categories.id")
       ap @fruits
       erb :"fruits/index"
     end

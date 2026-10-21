@@ -9,6 +9,7 @@
        		<input type="submit" value="Ta bort">
    	</form>
 	<a class="edit" href="/fruits/<%=fruit["id"]%>/edit">Ändra</a>
+	<a>Kategori: <%=fruit["category_name"]%></a>
     <br>
     <a style="color:black;">
 		<%="★" * fruit["tastiness"] + "☆" * (10-fruit["tastiness"])%>
